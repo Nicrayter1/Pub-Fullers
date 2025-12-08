@@ -1,3 +1,6 @@
+console.log('ProductsService загружен');
+console.log('window.supabase:', window.supabase);
+console.log('window.supabase?.auth:', window.supabase?.auth);
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
 
@@ -14,4 +17,5 @@ export async function updateProductColumn(productId, column, value) {
     .update({ [column]: value })
     .eq('id', productId);
 }
+
 
