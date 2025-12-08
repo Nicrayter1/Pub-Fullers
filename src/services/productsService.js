@@ -1,21 +1,41 @@
-console.log('ProductsService загружен');
-console.log('window.supabase:', window.supabase);
-console.log('window.supabase?.auth:', window.supabase?.auth);
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+c// productsService.js
+import { supabase } from './supabaseClient.js';
 
-
-const supabase = createClient('https://lmysveosqckpbyuldiym.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxteXN2ZW9zcWNrcGJ5dWxkaXltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4MTMxNTksImV4cCI6MjA4MDM4OTE1OX0.z1i_Fi7uCXnX3cml7RbTHR6RxIrxVY947iOCTi80fQY');
-
-export async function getProducts() {
-  const { data } = await supabase.from('products').select('*');
-  return data;
-}
-
-export async function updateProductColumn(productId, column, value) {
-  await supabase
-    .from('products')
-    .update({ [column]: value })
-    .eq('id', productId);
+export class ProductsService {
+    static async getAll() {
+        // Проверяем, авторизован ли пользователь
+        const user = AuthService.getCurrentUser();
+        if (!user) {
+            throw new Error('Пользователь не авторизован');
+        }
+        
+        const { data, error } = await supabase
+            .from('products')
+            .select('*');
+        
+        if (error) throw error;
+        return data;
+    }
+    
+    static async create(product) {
+        const user = AuthService.getCurrentUser();
+        if (!user) throw new Error('Не авторизован');
+        
+        // Добавляем ID пользователя в продукт
+        const productWithUser = {
+            ...product,
+            user_id: user.id,
+            created_at: new Date().toISOString()
+        };
+        
+        const { data, error } = await supabase
+            .from('products')
+            .insert([productWithUser])
+            .select();
+        
+        if (error) throw error;
+        return data;
+    }
 }
 
 
