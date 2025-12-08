@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Pub Work</title>
-<link rel="stylesheet" href="./src/styles/main.css">
+    <meta charset="UTF-8">
+    <title>Pub Work</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- Favicon можно добавить сюда, если есть -->
+    <!-- <link rel="icon" href="favicon.ico"> -->
 </head>
 <body>
-<script type="module" src="./src/main.js"></script>
+    <!-- Подключение Supabase через CDN -->
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+        window.supabase = createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
+    </script>
+
+    <!-- Подключение основного JS -->
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
+
