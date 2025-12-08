@@ -1,0 +1,458 @@
+/* ВАШ CSS БЕЗ ИЗМЕНЕНИЙ */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+        }
+        
+        body { 
+            background: #f5f5f5; 
+            padding: 8px; 
+            font-size: 14px; 
+        }
+        
+        .container { 
+            background: white; 
+            border-radius: 10px; 
+            padding: 12px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        h1 { 
+            font-size: 20px; 
+            margin-bottom: 12px; 
+            text-align: center; 
+            color: #333; 
+        }
+        
+        /* Поиск */
+        .search-container { 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            background: white; 
+            padding: 8px 0 10px 0; 
+            margin-bottom: 8px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+            background: #f8f9fa;
+        }
+        
+        /* Таблица - компактная */
+        .table-container { 
+            overflow-x: auto; 
+            margin-bottom: 15px; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 6px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            min-width: 360px;
+            font-size: 13px;
+        }
+        
+        th, td { 
+            padding: 6px 4px; 
+            border-bottom: 1px solid #e0e0e0; 
+            text-align: left;
+            vertical-align: middle;
+        }
+        
+        th { 
+            background: #f8f9fa; 
+            font-weight: 600; 
+            color: #555; 
+            font-size: 12px;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+        }
+        
+        /* Колонки */
+        .name-col { 
+            width: 45%; 
+            min-width: 140px;
+            padding-right: 2px;
+        }
+        
+        .volume-col { 
+            width: 15%; 
+            min-width: 50px;
+            padding-right: 2px;
+        }
+        
+        .bar-col { 
+            width: 20%; 
+            min-width: 70px;
+            text-align: center !important;
+        }
+        
+        /* Категория */
+        .category-header { 
+            background: #e8f4ff; 
+            font-weight: 600; 
+            color: #1976d2; 
+            font-size: 13px;
+        }
+        
+        /* Ячейки с кнопками - компактные */
+        .number-cell {
+            padding: 2px 4px !important;
+            text-align: center;
+        }
+        
+        .number-btn {
+            width: 100%;
+            min-height: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            padding: 0 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .number-btn:hover, .number-btn:active {
+            background: #f0f0f0;
+            border-color: #007AFF;
+        }
+        
+        /* Кнопки действий */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            min-width: calc(50% - 4px);
+            padding: 10px 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #007AFF;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 350px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-title {
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 12px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 13px;
+            color: #555;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #007AFF;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        /* Адаптация для iPhone 12 (375x812) */
+        @media (max-width: 390px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            th, td {
+                padding: 4px 3px;
+                font-size: 12px;
+            }
+            
+            .name-col {
+                min-width: 120px;
+            }
+            
+            .number-btn {
+                min-height: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+            
+            .action-btn {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+        }
+        
+        /* Темная тема для OLED */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #000;
+                color: #fff;
+            }
+            
+            .container {
+                background: #1c1c1e;
+            }
+            
+            .search-input {
+                background: #2c2c2e;
+                border-color: #3a3a3c;
+                color: #fff;
+            }
+            
+            table {
+                border-color: #3a3a3c;
+            }
+            
+            th {
+                background: #2c2c2e;
+                color: #8e8e93;
+            }
+            
+            td {
+                border-color: #3a3a3c;
+            }
+            
+            .category-header {
+                background: #2c2c2e;
+                color: #0a84ff;
+            }
+            
+            .number-btn {
+                background: #2c2c2e;
+                border-color: #3a3a3c;
+                color: #fff;
+            }
+            
+            .modal-content {
+                background: #1c1c1e;
+                color: #fff;
+            }
+            
+            .form-input {
+                background: #2c2c2e;
+                border-color: #3a3a3c;
+                color: #fff;
+            }
+        }
+        
+        /* Уведомления */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .notification.success {
+            background: #28a745;
+            display: block;
+        }
+        
+        .notification.error {
+            background: #dc3545;
+            display: block;
+        }
+        
+        .notification.info {
+            background: #007AFF;
+            display: block;
+        }
+        
+        /* Кнопка синхронизации */
+        .btn-sync {
+            background: #17a2b8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Учет стоков бара</h1>
+        
+        <!-- Уведомление -->
+        <div id="notification" class="notification"></div>
+        
+        <!-- Поиск -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" 
+                   placeholder="🔍 Поиск по названию или категории...">
+        </div>
+        
+        <!-- Кнопки действий -->
+        <div class="action-buttons">
+            <button class="action-btn btn-success" onclick="openAddModal('product')">
+                ➕ Добавить продукт
+            </button>
+            <button class="action-btn btn-secondary" onclick="openAddModal('category')">
+                📁 Добавить категорию
+            </button>
+            <button class="action-btn btn-sync" onclick="syncWithSupabase()">
+                🔄 Синхронизировать
+            </button>
+        </div>
+        
+        <!-- Таблица -->
+        <div class="table-container">
+            <table id="stockTable">
+                <thead>
+                    <tr>
+                        <th class="name-col">Наименование</th>
+                        <th class="volume-col">Тара, мл</th>
+                        <th class="bar-col">Бар 1 (Факт)</th>
+                        <th class="bar-col">Бар 2 (Факт)</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        
+        <!-- Кнопки сохранения -->
+        <div class="action-buttons">
+            <button class="action-btn btn-primary" onclick="saveData()">
+                💾 Сохранить локально
+            </button>
+            <button class="action-btn btn-primary" onclick="saveToSupabase()">
+                💾 Сохранить в БД
+            </button>
+            <button class="action-btn btn-secondary" onclick="exportData()">
+                📤 Экспорт CSV
+            </button>
+        </div>
+    </div>
+
+    <!-- Модальное окно для ввода числа -->
+    <div class="modal" id="numberModal">
+        <div class="modal-content">
+            <div class="modal-title" id="modalTitle">Введите количество</div>
+            <div style="text-align: center; margin-bottom: 15px; color: #666; font-size: 13px;">
+                Используйте точку для дробей: 0.5 или 1.5
+            </div>
+            <input type="number" step="0.1" class="form-input" id="numberInput" 
+                   inputmode="decimal" placeholder="0" autofocus>
+            <div class="modal-buttons">
+                <button class="action-btn btn-secondary" onclick="closeModal()">Отмена</button>
+                <button class="action-btn btn-primary" onclick="confirmNumber()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для добавления -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <div class="modal-title" id="addModalTitle">Добавить продукт</div>
+            
+            <div class="form-group">
+                <label class="form-label" for="addCategory">Категория</label>
+                <select class="form-input" id="addCategory" required>
+                    <option value="">Выберите категорию</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="nameGroup">
+                <label class="form-label" for="addName">Название продукта</label>
+                <input type="text" class="form-input" id="addName" 
+                       placeholder="Введите название" required>
+            </div>
+            
+            <div class="form-group" id="volumeGroup">
+                <label class="form-label" for="addVolume">Объем (мл)</label>
+                <input type="number" class="form-input" id="addVolume" 
+                       placeholder="Введите объем" min="0" step="1" required>
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="action-btn btn-secondary" onclick="closeAddModal()">Отмена</button>
+                <button class="action-btn btn-success" onclick="addItem()">Добавить</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
