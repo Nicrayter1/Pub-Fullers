@@ -37,9 +37,5 @@ jobs:
         with:
           name: qambar-backup-${{ github.run_id }}
           path: "*.dump"
-          retention-days: 30
-```
+          retention-days: 7
 
-Ключевое изменение — вместо просто `pg_dump` используем полный путь:
-```
-/usr/lib/postgresql/17/bin/pg_dump
