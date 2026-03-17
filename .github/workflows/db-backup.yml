@@ -2,18 +2,22 @@ name: Database Backup
 
 on:
   schedule:
-    - cron: '0 2 * * *'   # каждый день в 02:00 UTC (05:00 Астана)
-  workflow_dispatch:       # кнопка ручного запуска в GitHub UI
+    - cron: '0 2 * * *'
+  workflow_dispatch:
 
 jobs:
   backup:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install PostgreSQL client
+      - name: Install PostgreSQL 17 client
         run: |
           sudo apt-get update
-          sudo apt-get install -y postgresql-client
+          sudo apt-get install -y wget gnupg
+          wget -qO- https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo tee /etc/apt/trusted.gpg.d/pgdg.asc
+          echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client-17
 
       - name: Run pg_dump
         env:
@@ -31,4 +35,4 @@ jobs:
         with:
           name: qambar-backup-${{ github.run_id }}
           path: "*.dump"
-          retention-days: 30    # хранится 30 дней, потом удаляется
+          retention-days: 30
